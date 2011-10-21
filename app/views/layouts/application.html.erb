@@ -6,9 +6,26 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
+<body class="body">
+  <div id="header">
+    <h1><a href="/">tobias</a></h1>
+    <h2>your task manager application</h2>
+  </div>
 
+  <div id="content">
+    <%= yield %>
+  </div>
+
+  <div id="footer">
+    <ul class="menu">
+      <li><%= link_to("About", "#") %></li>
+      <li><%= link_to("About", "#") %></li>
+      <li><%= link_to("About", "#") %></li>
+      <li><%= link_to("About", "#") %></li>
+      <li><%= link_to("About", "#") %></li>
+    </ul>
+    <p>&copy; Copyright 2011</p>
+  </div>
 </body>
 </html>
