@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
 
   has_many :lists
   has_many :tasks, :through => :lists
-  has_many :tasks_due_today, :source => :tasks, :through => :lists,
-           :conditions => proc { "date(due_on) = '#{Date.today.to_s(:db)}'" }
+  has_many :unfinished_tasks_due_today, :source => :tasks, :through => :lists, :include => :list,
+           :conditions => proc { "finished = false and date(due_on) = '#{Date.today.to_s(:db)}'" },
+           :order => :list_id
+
+  validates :username, :presence => true, :uniqueness => true
 end
