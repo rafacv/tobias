@@ -16,7 +16,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.xml
   def new
-    @task = Task.new
+    @task = current_user.lists.find(params[:list_id]).tasks.new
     respond_with(@task)
   end
 
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(params[:task])
     @task.save
-    respond_with(@task)
+    respond_with([@task.list, @task])
   end
 
   # PUT /tasks/1
@@ -38,7 +38,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     @task.update_attributes(params[:task])
-    respond_with(@task)
+    respond_with([@task.list, @task])
   end
 
   # DELETE /tasks/1
@@ -46,6 +46,6 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    respond_with(@task)
+    respond_with(@task.list, @task)
   end
 end

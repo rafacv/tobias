@@ -17,13 +17,13 @@
     <td><%= task.finished %></td>
     <td><%= task.due_on %></td>
     <td><%= task.list_id %></td>
-    <td><%= link_to 'Show', task %></td>
-    <td><%= link_to 'Edit', edit_task_path(task) %></td>
-    <td><%= link_to 'Destroy', task, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', [task.list, task] %></td>
+    <td><%= link_to 'Edit', edit_list_task_path(task.list, task) %></td>
+    <td><%= link_to 'Destroy', [task.list, task], confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'New Task', new_list_task_path %>
