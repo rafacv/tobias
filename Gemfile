@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'devise', '1.4.8'
 gem 'simple_form', '1.5.2'
 gem 'carrierwave', '0.5.7'
+gem 'mini_magick'
 gem 'responders', '0.6.4'
 gem 'rspec-rails', '2.7.0', :group => [:development, :test]
 

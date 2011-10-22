@@ -11,7 +11,26 @@
   <div id="header">
     <h1><a href="/">tobias</a></h1>
     <h2>your task manager application</h2>
+
+    <% if user_signed_in? %>
+      <ul>
+        <li><%= link_to('logout', destroy_user_session_path, :method => :delete) %></li>
+        <li><%= link_to('account', edit_user_registration_path) %></li>
+        <%= image_tag(current_user.avatar_url(:thumb)) if current_user.avatar? %>
+      </ul>
+    <% else %>
+        <li><%= link_to('login', new_user_session_path) %></li>
+        <li><%= link_to('signup', new_user_registration_path) %></li>
+    <% end %>
   </div>
+
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+  <% if flash[:error] %>
+    <div class="error"><%= flash[:notice] %></div>
+  <% end %>
 
   <div id="content">
     <%= yield %>
