@@ -11,8 +11,15 @@
 </p>
 
 <p>
+  <% @list.tasks.each do |task| %>
+    <%= task.name %>
+    <hr>
+  <% end %>
+</p>
+
+<p>
   <b>User:</b>
-  <%= @list.user_id %>
+  <%= link_to(@list.user.username, "#") %>
 </p>
 
 

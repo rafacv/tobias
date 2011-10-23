@@ -17,7 +17,8 @@ class ListsController < ApplicationController
   # GET /lists/new
   # GET /lists/new.xml
   def new
-    @list = current_user.lists.new
+    @list = List.new
+    @list.tasks.build
     respond_with(@list)
   end
 

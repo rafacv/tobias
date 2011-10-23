@@ -3,6 +3,9 @@
  *= require_tree .
 */
 
+/* Reset default margins and paddings for all elements
+ * and set default font family.
+*/
 * {
   margin: 0;
   padding: 0;
@@ -45,13 +48,32 @@
   h2 {
     font-size: 12px;
   }
+
+  ul {
+    position: absolute;
+    top: 4px;
+    right: 50px;
+    height: 50px;
+    list-style-type: none;
+    color: #555;
+
+    li {
+      float: left;
+      vertical-align: middle;
+      padding: 0 10px 0;
+
+      & a:hover {
+        background: none;
+      }
+    }
+  }
 }
 
 #content {
   position: relative;
   margin: 20px auto;
   width: 650px;
-  height: 500px;
+  min-height: 500px;
   padding: 10px;
   border: 10px solid #c25b08;
   background-color: white;
@@ -78,6 +100,36 @@
 
   p {
     font-size: 16px;
+  }
+
+  form {
+
+    label, input {
+      padding: 5px;
+      font-size: 18px;
+      margin: 5px 0;
+    }
+
+    label, input[type=text], input[type=email], input[type=password] {
+      width: 95%;
+    }
+
+    label {
+      padding: 0;
+      display: block;
+
+      &.boolean {
+        display: inline;
+        &:after { content: ""; }
+      }
+
+      &:after {
+        content: ":";
+      }
+    }
+
+    input[type=checkbox] {
+    }
   }
 }
 
