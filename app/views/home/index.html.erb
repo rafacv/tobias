@@ -1,3 +1,11 @@
-<h2>Never again lose track of your things to do</h2>
+<%- unless user_signed_in? %>
+  <div id="ads">
+    <h2>
+      Never again lose track of your things to do,<br>
+      <%= link_to("sign up now!", new_user_registration_path) %>
+    </h2>
+  </div>
+<% end %>
 
-<p>Tobias is <em>yet another todo manager</em></p>
+<div id="main">
+</div>
