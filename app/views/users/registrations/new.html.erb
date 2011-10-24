@@ -4,20 +4,16 @@
                     :html => {:multipart => true}) do |f| %>
   <%= f.error_notification %>
 
-  <div class="inputs">
     <%= f.input :username, :required => true, :autofocus => true %>
     <%= f.input :email, :required => true %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
-    <br>
+    <hr>
     <%= f.input :avatar, :label => "Upload your avatar image" %>
     <%= f.input :avatar_cache, :as => :hidden %>
     <%= f.input :remote_avatar_url, :label => "Or URL image" %>
-  </div>
 
-  <div class="actions">
     <%= f.button :submit, "Sign up" %>
-  </div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

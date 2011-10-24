@@ -5,16 +5,16 @@ SimpleForm.setup do |config|
   config.components = [ :placeholder, :label_input, :hint, :error ]
 
   # Default tag used on hints.
-  # config.hint_tag = :span
+  config.hint_tag = :p
 
   # CSS class to add to all hint tags.
-  # config.hint_class = :hint
+  config.hint_class = :hint
 
   # CSS class used on errors.
-  # config.error_class = :error
+  config.error_class = :error
 
   # Default tag used on errors.
-  # config.error_tag = :span
+  config.error_tag = :p
 
   # Method used to tidy up errors.
   # config.error_method = :first

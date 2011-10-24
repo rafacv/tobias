@@ -1,27 +1,4 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: "display", locals: {list: @list, html_class: "list"} %>
+<br />
 
-<p>
-  <b>Name:</b>
-  <%= @list.name %>
-</p>
-
-<p>
-  <b>Public:</b>
-  <%= @list.public %>
-</p>
-
-<p>
-  <% @list.tasks.each do |task| %>
-    <%= task.name %>
-    <hr>
-  <% end %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= link_to(@list.user.username, "#") %>
-</p>
-
-
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<%= link_to image_tag("add.png", title: "Create new list"), new_list_path, class: "add_task" %>

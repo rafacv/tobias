@@ -1,14 +1,15 @@
-<%= simple_form_for(@list) do |f| %>
-  <p><%= @list.errors.full_messages.join("<br>").html_safe %></p>
-
-  <%= f.input :name %>
+<%= simple_nested_form_for(@list) do |f| %>
+  <%= f.input :name, :label => "List name" %>
   <%= f.input :public %>
 
-  <div class="task">
     <%= f.fields_for(:tasks) do |task_form| %>
-      <% render("tasks_form", f: task_form) %>
+      <div class="task">
+        <%= render("task_fields", f: task_form) %>
+      </div>
     <% end %>
-  </div>
+  <p>
+    <%= f.link_to_add(image_tag("task_add.png", title: "Add new task") + " Add new task", :tasks) %>
+  </p>
 
   <%= f.submit %>
 <% end %>

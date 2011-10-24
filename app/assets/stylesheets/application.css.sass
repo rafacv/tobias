@@ -52,51 +52,61 @@ body
           color: #feecf4
           background-color: rgba(255, 255, 255, 0.4)
 
-$thin_border: 1px solid #080
-$thick_border: 10px solid #040
+.left-list
+  margin: 40px 0 0
+  padding: 20px
+  width: 80%
+  float: left
+  border: 10px solid rgba(255, 255, 255, 0.4)
+  background-color: rgba(190, 255, 152, 0.5)
+  -moz-border-radius: 4em 1em 4em 1em
+  border-radius: 4em 1em 4em 1em
 
-.right-upper-box
-  border:
-    top:    $thick_border
-    left:   $thin_border
-    right:  $thick_border
-    bottom: $thin_border
-  border-radius: 10px
-  background-color: rgba(190, 255, 152, 0.8)
+  h4
+    margin: 0
+    font-size: 24px
+    text-indent: 20px
+    color: #040
+    span
+      font-size: 16px
+      // font-weight: normal
+      &.public
+        color: #060
+        &:before
+          content: "public "
+      &.private
+        color: #600
+        &:before
+          content: "private "
 
-.right-lower-box
-  border:
-    top:    $thin_border
-    left:   $thin_border
-    right:  $thick_border
-    bottom: $thick_border
-  border-radius: 10px
-  background-color: rgba(190, 255, 152, 0.8)
+.right-list
+  @extend .left-list
+  margin-left: 10px
+  -moz-border-radius: 1em 4em 1em 4em
+  border-radius: 1em 4em 1em 4em
+  float: right
 
-.left-upper-box
-  border:
-    top:    $thick_border
-    left:   $thick_border
-    right:  $thin_border
-    bottom: $thin_border
-  border-radius: 10px
-  background-color: rgba(190, 255, 152, 0.8)
-
-.left-lower-box
-  border:
-    top:    $thin_border
-    left:   $thick_border
-    right:  $thin_border
-    bottom: $thick_border
-  border-radius: 10px
-  background-color: rgba(190, 255, 152, 0.8)
+div.list
+  @extend .left-list
+  width: 80%
+  margin-left: 80px
 
 #content
   position: relative
   margin: 20px auto
   width: 90%
-  min-height: 300px
+  // min-height: 300px
   padding: 10px
+
+  $thin_border: 1px solid #080
+  $thick_border: 10px solid #040
+  border:
+    top:    $thin_border
+    left:   $thick_border
+    right:  $thin_border
+    bottom: $thick_border
+  border-radius: 10px
+  background-color: rgba(190, 255, 152, 0.8)
 
   #ads
     width: 350px
@@ -117,6 +127,12 @@ $thick_border: 10px solid #040
         &:hover
           color: #9f9
 
+  a
+    color: #050
+    text-decoration: none
+    text-shadow: 1px 1px 0 #393
+    &:hover
+      color: #0a0
   h2
     margin: 5px
     color: #050
@@ -125,25 +141,63 @@ $thick_border: 10px solid #040
     font-size: 30px
     text-align: center
 
+  #main
+    margin: 100px 20px 0
+
   p
     font-size: 16px
 
-  form
-    label, input
-      padding: 5px
-      font-size: 18px
-      margin: 5px 0
-    label, input[type=text], input[type=email], input[type=password]
-      width: 95%
-    label
-      padding: 0
-      display: block
-      &.boolean
-        display: inline
-        &:after
-          content: ""
+form
+  margin-bottom: 10px
+  label, input
+    padding: 5px
+    font-size: 18px
+    margin: 5px 0
+  label, input[type=text], input[type=email], input[type=password]
+    width: 95%
+  label
+    padding: 0
+    display: block
+    &.boolean
+      display: inline
       &:after
-        content: ":"
+        content: ""
+    &:after
+      content: ":"
+  p.hint, p.error
+    margin: 0 0 10px
+    font-size: 12px
+  p.error
+    color: #800
+  input.save
+    background: image-url("save.png")
+
+form.simple_form div.task
+  margin-left: 40px
+  font-size: 14px
+
+  div.due_on, div.destroy_task
+    display: none
+
+    label
+      width: auto
+      float: left
+
+a
+  color: green
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+p.controls
+  margin: 0
+  float: right
+
+.add_task img
+  padding: 0
+  border: 5px solid #090
+  border-radius: 100px
+  background-color: #090
 
 #footer
   position: absolute

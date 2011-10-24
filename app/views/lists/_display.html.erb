@@ -1,0 +1,22 @@
+<div class="<%= cycle_on_iterable(html_class) %>">
+  <h4><%= list.name %> <span class="<%= public_list?(list) %>">list</span></h4>
+  <ul>
+    <%- if list.tasks.empty? %>
+      <li>No tasks</li>
+    <%- else %>
+      <%- list.tasks.each do |task| %>
+        <li>
+          <%= image_tag("finished.png") if task.finished %>
+          <%= task.name %>
+          <%= "due on " + I18n.localize(task.due_on, format: :short) unless task.due_on.nil? %>
+        </li>
+      <%- end %>
+    <%- end %>
+  </ul>
+  <p class="controls">
+    <%= link_to image_tag("view_list.png", title: "Show list"), list %>
+    <%= link_to image_tag("edit.png", title: "Edit list"), edit_list_path(list) %>
+    <%= link_to image_tag("delete.png", title: "Delete list"), list,
+                confirm: 'Are you sure?', method: :delete %>
+  </p>
+</div>

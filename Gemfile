@@ -11,6 +11,7 @@ gem 'carrierwave', '0.5.7'
 gem 'mini_magick'
 gem 'responders', '0.6.4'
 gem 'rspec-rails', '2.7.0', :group => [:development, :test]
+gem 'nested_form', :git => "https://github.com/ryanb/nested_form.git"
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'

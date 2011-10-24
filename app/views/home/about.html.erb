@@ -1,0 +1,10 @@
+<%- unless user_signed_in? %>
+  <%= render :partial => "ads" %>
+<%- end %>
+
+<div id="main">
+  <h4>Tobias is a state-of-art webapplication that will keep track of your things to do.</h4>
+  <p>We know you are a busy person, crafting wonders and enchanting people all over the place. With that in mind we build <%= link_to("Tobias", root_path) %>, your best task tracking tool and ultimate web assistant! Forget no more what's left for packing, or what you got to pick at the grocery store or what task you got to do next.</p>
+  <p>Using Tobias you just got to click 'Create a new List', type in the list's name and what's to be done and you're done! Don't believe us it's that simple? <%= link_to("Sign up", new_user_registration_path) %> and try it for yourself!</p>
+  <p>You can always <%= link_to("contact support", "#") %> for help, press inquiries, or if you are alone in the dark on a rainy day. Or night.</p>
+</div>
