@@ -16,6 +16,7 @@
         <li><%= link_to('home', root_path) %></li>
       <% if user_signed_in? %>
         <li><%= link_to('my lists', lists_path) %></li>
+        <li><%= link_to('watched lists', watchlists_path) %></li>
         <li><%= link_to('logout', destroy_user_session_path, :method => :delete) %></li>
       <% else %>
         <li><%= link_to('login', new_user_session_path) %></li>

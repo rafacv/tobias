@@ -14,5 +14,5 @@
     <%- end %>
   </ul>
 
-  <%= render :partial => "lists/controls", :locals => {:list => list, :access_level => list.belongs_to(current_user)} %>
+  <%= render :partial => "lists/controls", :locals => {:list => list, :ownership => list.owned_by?(current_user)} %>
 </div>

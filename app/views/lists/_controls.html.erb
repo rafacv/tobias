@@ -1,10 +1,10 @@
 <p class="controls">
-  <%- if access_level == :owner %>
+  <%- if ownership %>
       <%= link_to image_tag("view_list.png", :title => "Show list"), list %>
       <%= link_to image_tag("edit.png", :title => "Edit list"), edit_list_path(list) %>
       <%= link_to image_tag("delete.png", :title => "Delete list"), list,
                   :confirm => 'Are you sure?', :method => :delete %>
   <%- else %>
-      <%= link_to image_tag("watch.png", :title => "Show list"), list %>
+      <%= link_to image_tag("watch.png", :title => "Show list"), {:controller => :watchlists, :action => :create, :list_id => list.id}, :method => :post %>
   <%- end %>
 </p>

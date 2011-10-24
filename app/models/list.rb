@@ -6,6 +6,7 @@ class List < ActiveRecord::Base
 
   validates :name, :user_id, :presence => true
   validates :name, :uniqueness => {:scope => :user_id}
+
   accepts_nested_attributes_for :tasks, :allow_destroy => true,
                                 :reject_if => proc { |t| t[:name].blank? }
 
@@ -13,14 +14,17 @@ class List < ActiveRecord::Base
 
   scope :newest_first, order("created_at desc")
   scope :more_recently_updated, order("updated_at desc")
-  scope :page, proc { |page| {offset: page * @@rows_per_page, limit: @@rows_per_page} }
-  scope :public, where(public: true)
+  scope :publicly_visible, where(public: true)
+  scope :paginate, proc { |page|
+    page = page.to_i
+    {offset: page * @@rows_per_page, limit: @@rows_per_page}
+  }
 
   def private?
     not self.public
   end
 
-  def belongs_to(user)
-    self.user_id == user.id ? :owner : :watcher
+  def owned_by?(user)
+    self.user_id == user.id
   end
 end

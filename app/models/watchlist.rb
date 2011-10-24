@@ -1,6 +1,6 @@
 class Watchlist < ActiveRecord::Base
-  has_one :user
-  has_one :list
+  belongs_to :user
+  belongs_to :list
 
   attr_accessible :list_id, :user_id
   validates :list_id, :uniqueness => {:scope => :user_id}
@@ -12,7 +12,7 @@ class Watchlist < ActiveRecord::Base
   # returning false in case she owns it.
   # She should not watch a list of hers.
   def list_owner_cannot_watch
-    if List.find(self.list_id).user == User.find(self.user_id)
+    if self.list.user == self.user
       errors.add(:base, "List owner cannot add it to watchlist")
     end
   end
@@ -21,6 +21,6 @@ class Watchlist < ActiveRecord::Base
   # Fails if list is private, since no private list
   # can be watched by others
   def watched_list_cannot_be_private
-    errors.add(:base, "Private list cannot be watched") if List.find(self.list_id).private?
+    errors.add(:base, "Private list cannot be watched") if self.list.private?
   end
 end
