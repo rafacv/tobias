@@ -1,10 +1,16 @@
 <%- unless user_signed_in? %>
   <%= render :partial => "ads" %>
-
-  <div id="main">
-    <p>Tobias is your ultimate personal assistant. Do not forget to remember the milk!</p>
-    <p>With a very clean and easy to use interface, your friends will call you crazy for liking a such scrutinized life. That's right! You gonna like management and will never forget your tasks. This is what we call management heaven. Be welcomed.</p>
-    <p><%= link_to("Sign up", new_user_registration_path) %> for an account and see for yourself why so many people use Tobias daily. Shopping list, assignments to deliver, pick up the tuxedo in the laundry, all in one place at the reach of your fingertips. Ah, don't you forget to book a table at Armandino's for your anniversary!</p>
-    <p>Once you stop forgetting kids at school, you will be their super hero. We know because we're the heroes of ours. All thanks to Tobias. ;-)</p>
-  </div>
 <%- end %>
+
+<div id="main">
+  <p>Tobias is your ultimate personal assistant. Do not forget to remember the milk!</p>
+  <p>With a very clean and easy to use interface, your friends will call you crazy for liking a such scrutinized life. That's right! You gonna like management and will never forget your tasks. This is what we call management heaven. Be welcomed.</p>
+  <p><%= link_to("Sign up", new_user_registration_path) %> for an account and see for yourself why so many people use Tobias daily. Shopping list, assignments to deliver, pick up the tuxedo in the laundry, all in one place at the reach of your fingertips. Ah, don't you forget to book a table at Armandino's for your anniversary!</p>
+  <p>Once you stop forgetting kids at school, you will be their super hero. We know because we're the heroes of ours. All thanks to Tobias. ;-)</p>
+</div>
+
+<%= render :partial => "lists/display", :collection => @lists, :as => :list, :locals => {:html_class => "list"} %>
+
+<div class="list">
+  <%= link_to("More", root_path(:page => params[:page].to_i + 1), :remote => true) %>
+</div>

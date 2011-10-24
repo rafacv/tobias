@@ -1,8 +1,8 @@
-<%= f.input :name, required: false, label: "Task name" %>
+<%= f.input :name, :required => false, :label => "Task name" %>
 <%= f.input :finished %>
 <div class="due_on">
   <%= f.input :due_on, :disabled => true %>
 </div>
-<p><%= link_to(image_tag("calendar_add.png", title: "Add a due date") + " Due on", "#", :"data-enable-dueon" => true) %></p>
-<p><%= f.link_to_remove(image_tag("delete.png", title: "Remove this task") + " Remove this task") %></p>
+<p><%= link_to(image_tag("calendar_add.png", :title => "Add a due date") + " Due on", "#", :"data-enable-dueon" => true) %></p>
+<p><%= f.link_to_remove(image_tag("delete.png", :title => "Remove this task") + " Remove this task") %></p>
 <hr>

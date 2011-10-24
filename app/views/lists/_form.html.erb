@@ -4,11 +4,11 @@
 
     <%= f.fields_for(:tasks) do |task_form| %>
       <div class="task">
-        <%= render("task_fields", f: task_form) %>
+        <%= render("task_fields", :f => task_form) %>
       </div>
     <% end %>
   <p>
-    <%= f.link_to_add(image_tag("task_add.png", title: "Add new task") + " Add new task", :tasks) %>
+    <%= f.link_to_add(image_tag("task_add.png", :title => "Add new task") + " Add new task", :tasks) %>
   </p>
 
   <%= f.submit %>
