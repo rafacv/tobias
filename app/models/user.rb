@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   has_many :lists, :dependent => :destroy
+  has_many :watchlists, :dependent => :destroy, :include => :list
   has_many :tasks, :through => :lists
   has_many :unfinished_tasks_due_today, :source => :tasks, :through => :lists, :include => :list,
            :conditions => proc { "finished = false and date(due_on) = '#{Date.today.to_s(:db)}'" },

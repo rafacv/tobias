@@ -1,0 +1,25 @@
+<h1>Listing watchlists</h1>
+
+<table>
+  <tr>
+    <th>List</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @watchlists.each do |watchlist| %>
+  <tr>
+    <td><%= watchlist.list_id %></td>
+    <td><%= watchlist.user_id %></td>
+    <td><%= link_to 'Show', watchlist %></td>
+    <td><%= link_to 'Edit', edit_watchlist_path(watchlist) %></td>
+    <td><%= link_to 'Destroy', watchlist, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Watchlist', new_watchlist_path %>
