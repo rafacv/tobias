@@ -1,10 +1,12 @@
 class ListsController < ApplicationController
+  self.responder = ::PaginatedResponder
   before_filter :authenticate_user!, :except => [:index, :show]
-  respond_to :js, :only => [:index]
 
   def index
     @lists = List.publicly_visible
-    respond_with(@lists)
+    respond_with(@lists) do |format|
+      format.html { render :layout => false if request.xhr? }
+    end
   end
 
   def show

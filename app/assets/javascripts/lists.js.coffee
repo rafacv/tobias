@@ -9,11 +9,18 @@ jQuery ->
     $(this).remove()
     false
 
-  $("a:contains('Load more')").click ->
+  $("a:contains('Load more')").live 'click', ->
     self = $ this
     $.ajax
-      dataType: "script"
+      dataType: "html"
       url: self.attr("href")
-      # success: (data) ->
-      #   $("#lists").append(data)
+      success: (data) ->
+        html = $(data)
+        if html.filter(".list, .right-list, .left-list").length == 0
+          self.parent().remove()
+          return
+        $("#lists").append(data)
+        $("a:last").parent().remove()
+        current_page = parseInt(self.attr("href").match(/page=(\d+)/)[1], 10) + 1
+        self.attr("href", "?page=" + current_page)
     false
