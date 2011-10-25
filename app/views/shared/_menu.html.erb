@@ -2,8 +2,8 @@
   <li><%= link_to 'home', root_path %></li>
   <li><%= link_to 'public lists', lists_path %></li>
   <% if user_signed_in? %>
-    <li><%= link_to 'my lists', url_for([current_user, List]) %></li>
-    <li><%= link_to 'my watched lists', url_for([current_user, Watchlist]) %></li>
+    <li><%= link_to 'my lists', user_lists_path %></li>
+    <li><%= link_to 'my watched lists', user_watchlists_path %></li>
     <li><%= link_to 'account', edit_user_registration_path %></li>
     <li><%= link_to 'logout', destroy_user_session_path, :method => :delete %></li>
   <% else %>

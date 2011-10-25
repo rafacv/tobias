@@ -1,3 +1,7 @@
-<%= render :partial => "lists/list", :collection => @lists, :locals => {:html_class => ["left-list", "right-list"]} %>
+<%- if @lists.empty? %>
+  <div class="list">No lists found.</div>
+<%- else %>
+  <%= render :partial => "lists/list", :collection => @lists, :locals => {:html_class => ["left-list", "right-list"]} %>
+<%- end %>
 
 <%= link_to image_tag("add.png", :title => "Create new list"), new_list_path, :class => "add_task" %>

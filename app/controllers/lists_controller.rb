@@ -3,7 +3,7 @@ class ListsController < ApplicationController
   respond_to :js, :only => [:index]
 
   def index
-    @lists = List.publicly_visible.paginate(params[:page])
+    @lists = List.publicly_visible
     respond_with(@lists)
   end
 
@@ -36,6 +36,6 @@ class ListsController < ApplicationController
   def destroy
     @list = current_user.lists.find(params[:id])
     @list.destroy
-    respond_with(@list)
+    respond_with(@list, :location => user_lists_url)
   end
 end

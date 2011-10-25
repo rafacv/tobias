@@ -12,7 +12,7 @@ class List < ActiveRecord::Base
   accepts_nested_attributes_for :tasks, :allow_destroy => true,
                                 :reject_if => proc { |t| t[:name].blank? }
 
-  @@rows_per_page = 4
+  @@rows_per_page = 5
 
   scope :newest_first, order("created_at desc")
   scope :more_recently_updated, order("updated_at desc")

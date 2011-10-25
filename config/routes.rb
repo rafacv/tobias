@@ -4,16 +4,11 @@ Tobias::Application.routes.draw do
 
   devise_for :users
 
-  resources :users do |user|
+  resources :lists
+
+  resource :user do
     resources :lists, :controller => "users/lists"
-    resources :watchlists, :controller => "users/watchlists"
+    resources :watchlists, :controller => "users/watchlists",
+                           :only => [:index, :create, :destroy]
   end
-
-  resources :lists do |list|
-    resources :tasks, :controller => "lists/tasks"
-    resources :watchlists, :controller => "lists/watchlists"
-  end
-
-  resources :tasks
-  resources :watchlists
 end
