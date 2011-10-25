@@ -9,3 +9,11 @@ jQuery ->
     $(this).remove()
     false
 
+  $("a:contains('Load more')").click ->
+    self = $ this
+    $.ajax
+      dataType: "script"
+      url: self.attr("href")
+      # success: (data) ->
+      #   $("#lists").append(data)
+    false

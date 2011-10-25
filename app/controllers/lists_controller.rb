@@ -1,8 +1,9 @@
 class ListsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
+  respond_to :js, :only => [:index]
 
   def index
-    @lists = current_user.lists.includes(:tasks).all
+    @lists = List.publicly_visible.paginate(params[:page])
     respond_with(@lists)
   end
 

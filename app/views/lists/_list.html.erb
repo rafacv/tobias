@@ -14,5 +14,7 @@
     <%- end %>
   </ul>
 
-  <%= render :partial => "lists/controls", :locals => {:list => list, :ownership => list.owned_by?(current_user)} %>
+  <%- if user_signed_in? %>
+    <%= render :partial => "lists/controls", :locals => {:list => list} %>
+  <%- end %>
 </div>

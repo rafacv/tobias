@@ -23,4 +23,12 @@ class Watchlist < ActiveRecord::Base
   def watched_list_cannot_be_private
     errors.add(:base, "Private list cannot be watched") if self.list.private?
   end
+
+  def self.find_by_params(params)
+    conditions = {}
+    [:user_id, :list_id, :id].each do |attribute|
+      conditions[attribute] = params[attribute] if params[attribute]
+    end
+    self.find(:first, :conditions => conditions)
+  end
 end

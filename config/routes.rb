@@ -1,13 +1,19 @@
 Tobias::Application.routes.draw do
-
   root :to => "home#index"
   get "about" => "home#about", :as => "about"
 
-  resources :lists do
-    resources :tasks
+  devise_for :users
+
+  resources :users do |user|
+    resources :lists, :controller => "users/lists"
+    resources :watchlists, :controller => "users/watchlists"
   end
 
-  resources :watchlists
+  resources :lists do |list|
+    resources :tasks, :controller => "lists/tasks"
+    resources :watchlists, :controller => "lists/watchlists"
+  end
 
-  devise_for :users
+  resources :tasks
+  resources :watchlists
 end

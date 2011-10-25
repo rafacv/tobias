@@ -1,0 +1,3 @@
+var new_lists = "<%= escape_javascript(render :partial => "lists/list", :collection => @lists,
+                                              :locals => {:html_class => ["left-list", "right-list"]}) %>");
+$("#lists").append(new_lists);

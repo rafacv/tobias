@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me,
-                  :avatar, :remote_avatar_url
+                  :avatar, :remote_avatar_url, :remove_avatar
   attr_accessor :login
 
   has_many :lists, :dependent => :destroy
