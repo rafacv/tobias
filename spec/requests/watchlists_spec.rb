@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Watchlists" do
   describe "GET /user/watchlists" do
     it "works! (now write some real specs)", :js => true do
-      login
+      login_user
       visit user_watchlists_path
       response.should be_successful
     end

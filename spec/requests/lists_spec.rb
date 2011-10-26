@@ -4,13 +4,8 @@ describe "Lists" do
   context "Public list created" do
 
     it "should be listed on public lists", :js => true do
-      user = Factory.create(:jimmy)
-      visit new_user_session_path
-      fill_in "Login",    :with => user.username
-      fill_in "Password", :with => "stairwaytoheaven"
-      click_button "Sign in"
+      login_user
 
-      page.should have_content("Signed in successfully.")
       visit new_list_path
 
       within("form") do
