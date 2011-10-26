@@ -2,7 +2,7 @@ class List < ActiveRecord::Base
   belongs_to :user
   has_many :tasks, :dependent => :destroy
   has_many :watchlists
-  has_many :watchers, :source => :user, :through => :watchlists, :include => :user
+  has_many :watchers, :source => :user, :through => :watchlists
 
   attr_accessible :name, :public, :tasks_attributes
 
