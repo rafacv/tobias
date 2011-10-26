@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe "Watchlists" do
-  describe "GET /watchlists" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get watchlists_path
-      response.status.should be(200)
+  describe "GET /user/watchlists" do
+    it "works! (now write some real specs)", :js => true do
+      login
+      visit user_watchlists_path
+      response.should be_successful
     end
   end
 end

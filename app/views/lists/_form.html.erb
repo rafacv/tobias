@@ -8,7 +8,7 @@
       </div>
     <% end %>
   <p>
-    <%= f.link_to_add(image_tag("task_add.png", :title => "Add new task") + " Add new task", :tasks) %>
+    <%= f.link_to_add(image_tag("task_add.png", :title => "Add new task") + " Add new task", :tasks, :id => :add_new_task) %>
   </p>
 
   <%= f.submit %>

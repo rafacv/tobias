@@ -1,8 +1,8 @@
 source :rubygems
 
-gem 'rails', '3.1.1'
+gem 'rails', :git => "https://github.com/rails/rails.git", :branch => "3-1-stable"
 
-gem 'rack', '1.3.3'
+gem 'rack', '1.3.5'
 gem 'mysql2', '0.3.7'
 gem 'jquery-rails'
 gem 'devise', '1.4.8'
@@ -23,6 +23,8 @@ group :test do
   gem 'capybara', '1.1.1'
   gem 'database_cleaner', '0.6.7'
   gem 'factory_girl_rails', '1.3.0'
+  gem 'selenium'
+  gem 'launchy'
 end
 
 gem 'ruby-debug19', :require => 'ruby-debug'
